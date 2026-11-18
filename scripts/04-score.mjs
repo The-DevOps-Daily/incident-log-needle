@@ -30,21 +30,22 @@ function rowsFor(id) {
 }
 
 // Latest record per (model, haystack); earlier failed attempts are counted.
-const calls = [];
+// Latest record per (model, log) across all files, so an archived .jsonl.gz
+// and a new .jsonl for the same model never count a log twice.
 const reruns = {};
+const latest = {};
 for (const f of readdirSync(DIR).filter((f) => f.endsWith('.jsonl') || f.endsWith('.jsonl.gz')).sort()) {
   const model = f.replace(/\.jsonl(\.gz)?$/, '');
   if (!MODELS[model]) throw new Error(`${f}: ${model} is not in lib/models.mjs`);
-  const recs = readStamped(join(DIR, f), STAMP);
-  const latest = {};
-  for (const r of recs) {
+  for (const r of readStamped(join(DIR, f), STAMP)) {
     if (r.model !== model) throw new Error(`${f}: record for ${r.id} is from ${r.model}`);
     if (!truth[r.id]) throw new Error(`${f}: unknown haystack ${r.id}`);
-    if (latest[r.id]) reruns[model] = (reruns[model] ?? 0) + 1;
-    latest[r.id] = r;
+    const k = `${model}|${r.id}`;
+    if (latest[k]) reruns[model] = (reruns[model] ?? 0) + 1;
+    if (!latest[k] || String(latest[k].startedAt) <= String(r.startedAt)) latest[k] = r;
   }
-  calls.push(...Object.values(latest));
 }
+const calls = Object.values(latest);
 if (!calls.length) throw new Error(`no records in ${DIR}`);
 
 // The pilot sent four of these logs to every model about an hour before the

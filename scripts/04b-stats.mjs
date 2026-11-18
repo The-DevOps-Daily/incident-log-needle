@@ -14,12 +14,15 @@ const truth = Object.fromEntries(readFileSync(join(ROOT, 'data/truth.jsonl'), 'u
 const meta = {};
 const rowsFor = (id) => (meta[id] ??= buildHaystack(truth[id]).meta);
 
-const calls = [];
+// Latest record per (model, log) across files; scripts/04-score.mjs checks the stamps.
+const latest = {};
 for (const f of readdirSync(join(ROOT, 'results/raw')).filter((f) => /\.jsonl(\.gz)?$/.test(f))) {
-  const latest = {};
-  for (const r of readJsonl(join(ROOT, 'results/raw', f))) latest[r.id] = r;
-  for (const r of Object.values(latest)) calls.push({ ...r, ...verdict(r, truth[r.id], rowsFor(r.id)) });
+  for (const r of readJsonl(join(ROOT, 'results/raw', f))) {
+    const k = `${r.model}|${r.id}`;
+    if (!latest[k] || String(latest[k].startedAt) <= String(r.startedAt)) latest[k] = r;
+  }
 }
+const calls = Object.values(latest).map((r) => ({ ...r, ...verdict(r, truth[r.id], rowsFor(r.id)) }));
 
 // Fisher exact test, two-sided, for a 2x2 table [[a, b], [c, d]].
 function logFact(n) {

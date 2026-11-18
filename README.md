@@ -147,7 +147,7 @@ Every log starts with different text, so no call reused a prompt cache except fo
 - Every recorded call is stamped with a hash of the runner, client, prompt, model settings, generator and truth file. The scorer refuses unstamped files, mixed stamps and stale stamps, and records filed under the wrong model.
 - Each results file has one writer (a lock file).
 - The runners keep their own count of spend from every record under `results/` and stop before that count plus an estimate for the calls in flight passes `SPEND_CAP_USD` ($14 by default). The estimate comes from the prompt size, so it is a guard, not a hard limit.
-- `scripts/05b-score-two-step.mjs` also refuses stale or mixed stamps and keeps the latest record per log.
+- The scorers keep the latest record per model and log across all files, and `scripts/05b-score-two-step.mjs` also refuses stale or mixed stamps.
 
 ## Known limits of the test
 
