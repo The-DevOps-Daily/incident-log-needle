@@ -1,0 +1,9 @@
+CAUGHT  needle planted twice (t025k-d050-r2): 2 problem(s); first: needle key found on 2 lines
+CAUGHT  decoy before the outage (t025k-d050-r2): 3 problem(s); first: needle at index 212, depth 0.5 gives 213
+CAUGHT  symptom before the outage (t025k-d050-r2): 3 problem(s); first: needle at index 212, depth 0.5 gives 213
+CAUGHT  unexplained error before the outage (t025k-d050-r2): 1 problem(s); first: unexplained warning or error before the outage on line 41: 2026-11-12T14:34:30.032Z orders-db[2231]: FATAL:  sorry, too many clients already
+CAUGHT  noise without its recovery (t025k-d000-r2): 1 problem(s); first: noise on line 92 has no recovery within 8 lines
+CAUGHT  truth points one line off (t025k-d050-r2): 3 problem(s); first: needle is on line 213, truth says 214
+CAUGHT  failing checkout request before the outage (t025k-d050-r2): 2 problem(s); first: failing requests before the outage on lines 31
+CAUGHT  a second scenario cause in the log (t025k-d050-r2): 2 problem(s); first: lines 51 match the cert cause pattern
+Unbroken copies of 5 haystacks: 0 problems

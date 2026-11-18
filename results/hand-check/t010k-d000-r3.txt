@@ -1,0 +1,28 @@
+# t010k-d000-r3 (redis, 10000 tokens, depth 0, 189 lines)
+Prompt summary: Cart and checkout started failing with HTTP 500 at about 15:48 UTC on 2026-11-14.
+
+NEEDLE           1	2026-11-14T15:39:22.182Z config-agent level=info msg="applied redis-cache config rev 57: maxmemory 4gb -> 64mb, maxmemory-policy allkeys-lru -> noeviction" by=ops-bot
+harmless       128	2026-11-14T15:46:22.405Z config-agent level=info msg="applied search-api config rev 43: cache_ttl 60s -> 120s" by=ops-bot
+harmless       134	2026-11-14T15:46:51.732Z config-agent level=info msg="applied redis-cache config rev 58: slowlog-log-slower-than 10000 -> 5000" by=ops-bot
+harmless       153	2026-11-14T15:48:07.894Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.4 -> search-api:4.5"
+
+Loud lines before the outage:
+    74	2026-11-14T15:43:10.000Z catalog-api level=warn msg="(node:1) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."
+   148	2026-11-14T15:47:44.272Z nginx-ingress 203.0.113.134 "GET /api/search?q=%ff%fe HTTP/1.1" 500 212 rt=0.004 upstream=search-api:8080
+   152	2026-11-14T15:48:05.102Z search-api level=error msg="invalid query encoding" q_len=6 err="malformed UTF-8"
+
+First 12 lines of the outage:
+   158	2026-11-14T15:48:47.747Z cart-api level=error msg="session write failed" err="OOM command not allowed when used memory > 'maxmemory'." session=s_71dbe40c5850
+   159	2026-11-14T15:48:49.062Z k8s-event Normal Started pod/report-export-29388118-vzw7d Started container job
+   160	2026-11-14T15:48:49.513Z checkout-api level=error msg="cart load failed" err="session store: OOM command not allowed when used memory > 'maxmemory'." trace_id=321512b7494169fa
+   161	2026-11-14T15:48:52.612Z checkout-api level=error msg="cart load failed" err="session store: OOM command not allowed when used memory > 'maxmemory'." trace_id=b529fc6b85bfd7d2
+   162	2026-11-14T15:48:53.431Z nginx-ingress 192.0.2.27 "POST /api/cart/items HTTP/1.1" 500 349 rt=0.849 upstream=cart-api:8080
+   163	2026-11-14T15:48:56.353Z cart-api level=error msg="session write failed" err="OOM command not allowed when used memory > 'maxmemory'." session=s_779fe783a22d
+   164	2026-11-14T15:48:57.964Z cart-api level=info msg="cart updated" cart=c_6077180914 items=5 duration_ms=15
+   165	2026-11-14T15:48:58.655Z checkout-api level=error msg="cart load failed" err="session store: OOM command not allowed when used memory > 'maxmemory'." trace_id=b47f68fe75962483
+   166	2026-11-14T15:49:00.615Z nginx-ingress 198.51.100.92 "GET /healthz HTTP/1.1" 200 2 rt=0.009 upstream=checkout-api:8080
+   167	2026-11-14T15:49:00.809Z catalog-api level=info msg="product loaded" product_id=1041 duration_ms=2
+   168	2026-11-14T15:49:01.606Z nginx-ingress 192.0.2.2 "GET /api/products/8470 HTTP/1.1" 200 15681 rt=0.078 upstream=catalog-api:8080
+   169	2026-11-14T15:49:02.014Z catalog-api level=info msg="product loaded" product_id=7682 duration_ms=8
+
+DECOY          173	2026-11-14T15:49:04.542Z cart-api level=fatal msg="unhandled error, exiting" err="session store unavailable" uptime=41h12m

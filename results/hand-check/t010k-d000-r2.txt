@@ -1,0 +1,29 @@
+# t010k-d000-r2 (hpa, 10000 tokens, depth 0, 185 lines)
+Prompt summary: Checkout (POST /api/checkout) started returning HTTP 503 at about 15:11 UTC on 2026-11-10.
+
+NEEDLE           1	2026-11-10T15:00:00.002Z k8s-audit user=deploy-bot verb=patch resource=horizontalpodautoscalers ns=shop name=checkout-api diff="spec.maxReplicas: 24 -> 3"
+harmless        34	2026-11-10T15:02:25.032Z k8s-audit user=deploy-bot verb=patch resource=horizontalpodautoscalers ns=shop name=search-api diff="spec.maxReplicas: 10 -> 12"
+harmless        75	2026-11-10T15:05:54.743Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.5 -> search-api:4.6"
+harmless       150	2026-11-10T15:10:43.350Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=worker diff="spec.replicas: 3 -> 4"
+
+Loud lines before the outage:
+    10	2026-11-10T15:00:38.799Z k8s-event Warning Deprecated job/report-export batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob
+    90	2026-11-10T15:06:48.808Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_da788d7b5a attempt=1 err="image decode: unexpected EOF"
+    93	2026-11-10T15:06:50.860Z nginx-ingress [warn] 31#31: *115407 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/8/85/0000016657 while reading upstream, client: 203.0.113.119, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+   136	2026-11-10T15:09:32.433Z k8s-event Warning Deprecated job/report-export batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob
+
+First 12 lines of the outage:
+   154	2026-11-10T15:11:07.884Z k8s-event Warning ScalingLimited horizontalpodautoscaler/checkout-api the desired replica count (15) is more than the maximum replica count (3)
+   155	2026-11-10T15:11:08.722Z checkout-api level=warn msg="request queue full, shedding load" in_flight=512 queue=512 path=/api/checkout
+   156	2026-11-10T15:11:09.328Z nginx-ingress 203.0.113.117 "POST /api/cart/items HTTP/1.1" 201 17115 rt=0.057 upstream=cart-api:8080
+   157	2026-11-10T15:11:10.147Z cart-api level=info msg="cart updated" cart=c_2ad9c38538 items=2 duration_ms=33
+   158	2026-11-10T15:11:11.368Z nginx-ingress 192.0.2.21 "POST /api/cart/items HTTP/1.1" 201 20898 rt=0.031 upstream=cart-api:8080
+   159	2026-11-10T15:11:15.875Z k8s-audit user=system:serviceaccount:argocd:argocd-application-controller verb=list resource=services ns=shop name=checkout-api
+   160	2026-11-10T15:11:17.482Z checkout-api level=warn msg="request queue full, shedding load" in_flight=512 queue=512 path=/api/checkout
+   161	2026-11-10T15:11:19.536Z checkout-api level=warn msg="request queue full, shedding load" in_flight=512 queue=512 path=/api/checkout
+   162	2026-11-10T15:11:19.936Z alertmanager [firing] CheckoutErrorRate severity=page summary="5xx ratio 0.62 on POST /api/checkout"
+   163	2026-11-10T15:11:21.735Z nginx-ingress 198.51.100.231 "GET /api/cart HTTP/1.1" 200 13385 rt=0.108 upstream=cart-api:8080
+   164	2026-11-10T15:11:22.676Z checkout-api level=warn msg="request queue full, shedding load" in_flight=512 queue=512 path=/api/checkout
+   165	2026-11-10T15:11:24.936Z checkout-api level=warn msg="request queue full, shedding load" in_flight=512 queue=512 path=/api/checkout
+
+DECOY          169	2026-11-10T15:11:39.595Z k8s-event Warning BackOff pod/checkout-api-d5lbb4dq4-frsdw Back-off restarting failed container checkout-api in pod checkout-api-d5lbb4dq4-frsdw (exit code 137)

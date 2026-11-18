@@ -1,0 +1,27 @@
+# t010k-d025-r3 (queue, 10000 tokens, depth 0.25, 184 lines)
+Prompt summary: Checkout (POST /api/checkout) started failing with HTTP 500 at about 15:51 UTC on 2026-11-12.
+
+NEEDLE          39	2026-11-12T15:44:05.156Z worker level=info msg="consumer paused by operator" queue=payment-confirmations consumers=0 requested_by=ops-bot
+harmless        64	2026-11-12T15:45:48.575Z worker level=info msg="consumer paused by operator" queue=report.daily consumers=0 requested_by=ops-bot
+harmless        92	2026-11-12T15:47:13.496Z worker level=info msg="consumer prefetch changed" queue=email.send prefetch=50 -> 100
+harmless       138	2026-11-12T15:50:28.194Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.4 -> search-api:4.5"
+
+Loud lines before the outage:
+    94	2026-11-12T15:47:32.213Z redis-cache 1:M 12 Nov 2026 15:47:32.213 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+   131	2026-11-12T15:50:04.986Z nginx-ingress [warn] 31#31: *159174 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/3/66/0000056561 while reading upstream, client: 203.0.113.157, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+
+First 12 lines of the outage:
+   153	2026-11-12T15:51:15.031Z checkout-api level=error msg="publish failed" queue=payment-confirmations err="message rejected: queue length limit 200000 reached (x-overflow=reject-publish)" trace_id=8184e7e4da26f594
+   154	2026-11-12T15:51:15.602Z checkout-api level=error msg="publish failed" queue=payment-confirmations err="message rejected: queue length limit 200000 reached (x-overflow=reject-publish)" trace_id=681300dd3183bbe2
+   155	2026-11-12T15:51:16.069Z checkout-api level=error msg="publish failed" queue=payment-confirmations err="message rejected: queue length limit 200000 reached (x-overflow=reject-publish)" trace_id=4b0c9ca77b632f72
+   156	2026-11-12T15:51:16.898Z nginx-ingress 203.0.113.238 "POST /api/cart/items HTTP/1.1" 201 15662 rt=0.091 upstream=cart-api:8080
+   157	2026-11-12T15:51:18.732Z rabbitmq [warning] <0.414.0> queue 'payment-confirmations' in vhost 'shop': max length 200000 reached, rejecting publishes
+   158	2026-11-12T15:51:19.216Z nginx-ingress 203.0.113.214 "GET /api/products/5573 HTTP/1.1" 200 7259 rt=0.006 upstream=catalog-api:8080
+   159	2026-11-12T15:51:19.366Z worker level=info msg="job done" job=thumbnail.render id=j_c1fa3c97de duration_ms=883
+   160	2026-11-12T15:51:19.543Z search-api level=info msg="search served" q_len=4 hits=26 duration_ms=171 cache=hit
+   161	2026-11-12T15:51:20.550Z rabbitmq [warning] <0.546.0> queue 'payment-confirmations' in vhost 'shop': max length 200000 reached, rejecting publishes
+   162	2026-11-12T15:51:20.676Z rabbitmq [warning] <0.512.0> memory resource limit alarm set on node rabbit@mq-0. Publishers will be blocked until this alarm clears
+   163	2026-11-12T15:51:21.057Z checkout-api level=info msg="order placed" order_id=ord_965a4759 items=3 total_eur=248.64 duration_ms=73 trace_id=b75d9e4b3fc39e72
+   164	2026-11-12T15:51:21.185Z orders-db[6231]: LOG:  automatic vacuum of table "shop.public.sessions": index scans: 1, pages: 0 removed, 7871 remain, tuples: 3402 removed
+
+DECOY          162	2026-11-12T15:51:20.676Z rabbitmq [warning] <0.512.0> memory resource limit alarm set on node rabbit@mq-0. Publishers will be blocked until this alarm clears

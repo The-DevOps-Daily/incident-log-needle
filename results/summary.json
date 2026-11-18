@@ -1,0 +1,2852 @@
+{
+ "stamp": "73f5f90ea7e43a3b",
+ "calls": 365,
+ "firstCall": "2026-11-18T11:49:41.148Z",
+ "lastCall": "2026-11-18T12:10:17.510Z",
+ "prices": "https://docs.digitalocean.com/products/inference/details/pricing/ (page says 'Last verified 17 Nov 2026'; read 2026-11-18). USD per 1M tokens, standard processing.",
+ "models": {
+  "openai-gpt-oss-120b": {
+   "name": "gpt-oss-120b",
+   "price": {
+    "input": 0.1,
+    "cachedInput": 0.1,
+    "output": 0.7
+   },
+   "n": 60,
+   "exact": 33,
+   "exactPct": 55,
+   "exactCI": [
+    42.4917145489815,
+    66.9065461462392
+   ],
+   "firstLengthWithMiss": 10000,
+   "spend": 0.3087842,
+   "spendFirstPaste": 0.30878420000000006,
+   "cacheHits": [],
+   "retriedCalls": 0,
+   "refusedAttempts": 0,
+   "attemptStatuses": {
+    "200": 60
+   },
+   "finish": {
+    "stop": 60
+   },
+   "reruns": 0,
+   "byScenario": {
+    "cert": {
+     "n": 12,
+     "exact": 10
+    },
+    "hpa": {
+     "n": 12,
+     "exact": 8
+    },
+    "pool": {
+     "n": 12,
+     "exact": 6
+    },
+    "queue": {
+     "n": 12,
+     "exact": 0
+    },
+    "redis": {
+     "n": 12,
+     "exact": 9
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 15,
+     "counts": {
+      "exact": 11,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 1,
+      "symptom": 3,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 73.33333333333333,
+     "exactCI": [
+      48.04911034231324,
+      89.10272389681717
+     ],
+     "foundPct": 73.33333333333333,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 1
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 10736,
+      "p90": 11210,
+      "max": 11525
+     },
+     "cachedTokens": 2624,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 408,
+      "p90": 570.6,
+      "max": 768
+     },
+     "costPerCall": 0.0013868,
+     "billedPerCall": 0.0013868,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1007,
+      "p90": 1184.4,
+      "max": 4267
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 7197,
+      "p90": 9569.199999999999,
+      "max": 13811
+     }
+    },
+    "25000": {
+     "n": 15,
+     "counts": {
+      "exact": 9,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 6,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 60,
+     "exactCI": [
+      35.746442756507705,
+      80.17577191740534
+     ],
+     "foundPct": 60,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 2
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 1
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 25792,
+      "p90": 26151,
+      "max": 26206
+     },
+     "cachedTokens": 2688,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 425,
+      "p90": 782.1999999999999,
+      "max": 850
+     },
+     "costPerCall": 0.002930946666666667,
+     "billedPerCall": 0.002930946666666667,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1777,
+      "p90": 1942.8,
+      "max": 3077
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 7429,
+      "p90": 12666.8,
+      "max": 13124
+     }
+    },
+    "50000": {
+     "n": 15,
+     "counts": {
+      "exact": 7,
+      "wrong_number": 0,
+      "decoy": 2,
+      "component": 2,
+      "symptom": 4,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 46.666666666666664,
+     "exactCI": [
+      24.80922525974644,
+      69.88336984894921
+     ],
+     "foundPct": 46.666666666666664,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 1
+      },
+      "1": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 50659,
+      "p90": 51486.6,
+      "max": 51529
+     },
+     "cachedTokens": 2560,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 603,
+      "p90": 939.1999999999999,
+      "max": 1135
+     },
+     "costPerCall": 0.005540866666666667,
+     "billedPerCall": 0.005540866666666667,
+     "ttftMs": {
+      "n": 15,
+      "p50": 3431,
+      "p90": 3577,
+      "max": 3878
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 11980,
+      "p90": 18121.2,
+      "max": 20177
+     }
+    },
+    "100000": {
+     "n": 15,
+     "counts": {
+      "exact": 6,
+      "wrong_number": 0,
+      "decoy": 2,
+      "component": 0,
+      "symptom": 7,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 40,
+     "exactCI": [
+      19.824228082594665,
+      64.25355724349228
+     ],
+     "foundPct": 40,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 1
+      },
+      "1": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 1
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 101815,
+      "p90": 103110,
+      "max": 103707
+     },
+     "cachedTokens": 2624,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 659,
+      "p90": 1206.6,
+      "max": 1547
+     },
+     "costPerCall": 0.010727000000000002,
+     "billedPerCall": 0.010727000000000002,
+     "ttftMs": {
+      "n": 15,
+      "p50": 8746,
+      "p90": 10096.6,
+      "max": 12450
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 20069,
+      "p90": 27093.8,
+      "max": 54178
+     }
+    }
+   },
+   "nonExact": [
+    {
+     "id": "t100k-d025-r3",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 1731,
+     "needle": 433,
+     "kind": "symptom",
+     "component": "k8s-event",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d075-r1",
+     "scenario": "pool",
+     "verdict": "symptom",
+     "line": 426,
+     "needle": 319,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d100-r3",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 874,
+     "needle": 873,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d000-r1",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1716,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d050-r3",
+     "scenario": "hpa",
+     "verdict": "decoy",
+     "line": 876,
+     "needle": 435,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d050-r2",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 1738,
+     "needle": 868,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d075-r1",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 151,
+     "needle": 113,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d025-r1",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 863,
+     "needle": 216,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d075-r3",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 428,
+     "needle": 321,
+     "kind": "symptom",
+     "component": "k8s-event",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d075-r2",
+     "scenario": "redis",
+     "verdict": "symptom",
+     "line": 1725,
+     "needle": 1293,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d025-r2",
+     "scenario": "pool",
+     "verdict": "component",
+     "line": 867,
+     "needle": 217,
+     "kind": "symptom",
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d000-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 872,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d050-r3",
+     "scenario": "cert",
+     "verdict": "symptom",
+     "line": 420,
+     "needle": 210,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d025-r3",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 157,
+     "needle": 39,
+     "kind": "symptom",
+     "component": "rabbitmq",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d075-r3",
+     "scenario": "redis",
+     "verdict": "component",
+     "line": 866,
+     "needle": 648,
+     "kind": "bg-post",
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d000-r3",
+     "scenario": "pool",
+     "verdict": "decoy",
+     "line": 879,
+     "needle": 1,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d100-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1722,
+     "needle": 1721,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d050-r1",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 428,
+     "needle": 214,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d025-r1",
+     "scenario": "pool",
+     "verdict": "decoy",
+     "line": 1763,
+     "needle": 435,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d050-r1",
+     "scenario": "pool",
+     "verdict": "symptom",
+     "line": 859,
+     "needle": 430,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d000-r3",
+     "scenario": "cert",
+     "verdict": "symptom",
+     "line": 1730,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d075-r3",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1731,
+     "needle": 1298,
+     "kind": "symptom",
+     "component": "rabbitmq",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d000-r3",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 421,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d050-r3",
+     "scenario": "redis",
+     "verdict": "decoy",
+     "line": 1747,
+     "needle": 864,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d050-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 155,
+     "needle": 78,
+     "kind": "symptom",
+     "component": "rabbitmq",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d025-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 419,
+     "needle": 105,
+     "kind": "symptom",
+     "component": "rabbitmq",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d075-r2",
+     "scenario": "pool",
+     "verdict": "component",
+     "line": 154,
+     "needle": 115,
+     "kind": "symptom",
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    }
+   ]
+  },
+  "deepseek-v4-flash-0731": {
+   "name": "DeepSeek V4 Flash 0731",
+   "price": {
+    "input": 0.14,
+    "cachedInput": 0.028,
+    "output": 0.28
+   },
+   "n": 75,
+   "exact": 75,
+   "exactPct": 100,
+   "exactCI": [
+    95.12744540953,
+    100
+   ],
+   "firstLengthWithMiss": null,
+   "spend": 0.7775667479999998,
+   "spendFirstPaste": 0.8403870999999998,
+   "cacheHits": [
+    "t050k-d000-r1 (50432 of 50768 prompt tokens)",
+    "t200k-d000-r1 (203776 of 204098 prompt tokens)",
+    "t100k-d000-r1 (101632 of 102119 prompt tokens)",
+    "t200k-d100-r1 (205056 of 205397 prompt tokens)"
+   ],
+   "retriedCalls": 0,
+   "refusedAttempts": 0,
+   "attemptStatuses": {
+    "200": 75
+   },
+   "finish": {
+    "stop": 75
+   },
+   "reruns": 0,
+   "byScenario": {
+    "cert": {
+     "n": 15,
+     "exact": 15
+    },
+    "hpa": {
+     "n": 15,
+     "exact": 15
+    },
+    "pool": {
+     "n": 15,
+     "exact": 15
+    },
+    "queue": {
+     "n": 15,
+     "exact": 15
+    },
+    "redis": {
+     "n": 15,
+     "exact": 15
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 10807,
+      "p90": 11301.2,
+      "max": 11634
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 390,
+      "p90": 573.4,
+      "max": 954
+     },
+     "costPerCall": 0.001650292,
+     "billedPerCall": 0.001650292,
+     "ttftMs": {
+      "n": 15,
+      "p50": 829,
+      "p90": 2084.4,
+      "max": 2743
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 2405,
+      "p90": 7310.4,
+      "max": 19894
+     }
+    },
+    "25000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 25985,
+      "p90": 26306.4,
+      "max": 26391
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 438,
+      "p90": 530.2,
+      "max": 613
+     },
+     "costPerCall": 0.0037557426666666666,
+     "billedPerCall": 0.0037557426666666666,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1241,
+      "p90": 1733.3999999999999,
+      "max": 4010
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 2538,
+      "p90": 4917.599999999999,
+      "max": 6289
+     }
+    },
+    "50000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 51056,
+      "p90": 51770,
+      "max": 51812
+     },
+     "cachedTokens": 50432,
+     "cacheHits": [
+      "t050k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 428,
+      "p90": 495.2,
+      "max": 648
+     },
+     "costPerCall": 0.007278833333333334,
+     "billedPerCall": 0.006902274400000002,
+     "ttftMs": {
+      "n": 14,
+      "p50": 1919.5,
+      "p90": 2627.1000000000004,
+      "max": 3120
+     },
+     "totalMs": {
+      "n": 14,
+      "p50": 3387,
+      "p90": 4362.200000000001,
+      "max": 4722
+     }
+    },
+    "100000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 102350,
+      "p90": 103749.6,
+      "max": 104350
+     },
+     "cachedTokens": 101632,
+     "cacheHits": [
+      "t100k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 441,
+      "p90": 531.1999999999999,
+      "max": 579
+     },
+     "costPerCall": 0.01448175866666667,
+     "billedPerCall": 0.013722906400000004,
+     "ttftMs": {
+      "n": 14,
+      "p50": 3609,
+      "p90": 4334,
+      "max": 11840
+     },
+     "totalMs": {
+      "n": 14,
+      "p50": 5021.5,
+      "p90": 7383.800000000001,
+      "max": 13350
+     }
+    },
+    "200000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 204724,
+      "p90": 207933.4,
+      "max": 208338
+     },
+     "cachedTokens": 408832,
+     "cacheHits": [
+      "t200k-d000-r1",
+      "t200k-d100-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 403,
+      "p90": 591.4,
+      "max": 715
+     },
+     "costPerCall": 0.028859179999999998,
+     "billedPerCall": 0.025806567733333334,
+     "ttftMs": {
+      "n": 13,
+      "p50": 7607,
+      "p90": 9059.2,
+      "max": 9537
+     },
+     "totalMs": {
+      "n": 13,
+      "p50": 9060,
+      "p90": 10799.800000000001,
+      "max": 12446
+     }
+    }
+   },
+   "nonExact": []
+  },
+  "glm-5.3-flash": {
+   "name": "GLM-5.3 Flash",
+   "price": {
+    "input": 0.15,
+    "cachedInput": 0.03,
+    "output": 0.5
+   },
+   "n": 75,
+   "exact": 75,
+   "exactPct": 100,
+   "exactCI": [
+    95.12744540953,
+    100
+   ],
+   "firstLengthWithMiss": null,
+   "spend": 0.9833462000000002,
+   "spendFirstPaste": 0.9833462000000002,
+   "cacheHits": [],
+   "retriedCalls": 25,
+   "refusedAttempts": 37,
+   "attemptStatuses": {
+    "200": 75,
+    "529": 37
+   },
+   "finish": {
+    "stop": 75
+   },
+   "reruns": 2,
+   "byScenario": {
+    "cert": {
+     "n": 15,
+     "exact": 15
+    },
+    "hpa": {
+     "n": 15,
+     "exact": 15
+    },
+    "pool": {
+     "n": 15,
+     "exact": 15
+    },
+    "queue": {
+     "n": 15,
+     "exact": 15
+    },
+    "redis": {
+     "n": 15,
+     "exact": 15
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 11152,
+      "p90": 11649.8,
+      "max": 11990
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 599,
+      "p90": 802.1999999999999,
+      "max": 854
+     },
+     "costPerCall": 0.0019797633333333334,
+     "billedPerCall": 0.0019797633333333334,
+     "ttftMs": {
+      "n": 15,
+      "p50": 900,
+      "p90": 1147.4,
+      "max": 2452
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 6435,
+      "p90": 7768.4,
+      "max": 8399
+     }
+    },
+    "25000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 27025,
+      "p90": 27505.8,
+      "max": 27587
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 721,
+      "p90": 982.1999999999999,
+      "max": 1065
+     },
+     "costPerCall": 0.004400503333333333,
+     "billedPerCall": 0.004400503333333333,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1477,
+      "p90": 1846.6,
+      "max": 4002
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 6727,
+      "p90": 12188.4,
+      "max": 13612
+     }
+    },
+    "50000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 53528,
+      "p90": 54432.6,
+      "max": 54512
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 813,
+      "p90": 3007.7999999999993,
+      "max": 11932
+     },
+     "costPerCall": 0.008959569999999997,
+     "billedPerCall": 0.008959569999999997,
+     "ttftMs": {
+      "n": 15,
+      "p50": 2499,
+      "p90": 2808.4,
+      "max": 3039
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 8043,
+      "p90": 30421.399999999994,
+      "max": 154368
+     }
+    },
+    "100000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 107158,
+      "p90": 108522.4,
+      "max": 109185
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 969,
+      "p90": 5446.799999999997,
+      "max": 12374
+     },
+     "costPerCall": 0.01719329333333334,
+     "billedPerCall": 0.01719329333333334,
+     "ttftMs": {
+      "n": 15,
+      "p50": 4481,
+      "p90": 4723.8,
+      "max": 6319
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 14128,
+      "p90": 68408.19999999997,
+      "max": 134922
+     }
+    },
+    "200000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 214585,
+      "p90": 218026.6,
+      "max": 218315
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 1151,
+      "p90": 2687.4,
+      "max": 3420
+     },
+     "costPerCall": 0.033023283333333334,
+     "billedPerCall": 0.033023283333333334,
+     "ttftMs": {
+      "n": 15,
+      "p50": 8677,
+      "p90": 9511.8,
+      "max": 11137
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 18663,
+      "p90": 39511.399999999994,
+      "max": 54265
+     }
+    }
+   },
+   "nonExact": []
+  },
+  "mistral-3-14B": {
+   "name": "Ministral 3 14B",
+   "price": {
+    "input": 0.2,
+    "cachedInput": 0.04,
+    "output": 0.2
+   },
+   "n": 60,
+   "exact": 41,
+   "exactPct": 68.33333333333333,
+   "exactCI": [
+    55.76599505698346,
+    78.69429415882567
+   ],
+   "firstLengthWithMiss": 10000,
+   "spend": 0.7507748400000002,
+   "spendFirstPaste": 0.7854270000000003,
+   "cacheHits": [
+    "t100k-d000-r1 (139968 of 140027 prompt tokens)",
+    "t050k-d000-r1 (69568 of 69605 prompt tokens)"
+   ],
+   "retriedCalls": 0,
+   "refusedAttempts": 0,
+   "attemptStatuses": {
+    "200": 60
+   },
+   "finish": {
+    "stop": 60
+   },
+   "reruns": 0,
+   "byScenario": {
+    "cert": {
+     "n": 12,
+     "exact": 12
+    },
+    "hpa": {
+     "n": 12,
+     "exact": 8
+    },
+    "pool": {
+     "n": 12,
+     "exact": 8
+    },
+    "queue": {
+     "n": 12,
+     "exact": 2
+    },
+    "redis": {
+     "n": 12,
+     "exact": 11
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 15,
+     "counts": {
+      "exact": 11,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 1,
+      "missed": 3,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 73.33333333333333,
+     "exactCI": [
+      48.04911034231324,
+      89.10272389681717
+     ],
+     "foundPct": 73.33333333333333,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 2
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 14586,
+      "p90": 15247.8,
+      "max": 15744
+     },
+     "cachedTokens": 1728,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 92,
+      "p90": 154.8,
+      "max": 184
+     },
+     "costPerCall": 0.0029556400000000003,
+     "billedPerCall": 0.0029372080000000006,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1394,
+      "p90": 1935.3999999999999,
+      "max": 3206
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 5197,
+      "p90": 7166.4,
+      "max": 8151
+     }
+    },
+    "25000": {
+     "n": 15,
+     "counts": {
+      "exact": 11,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 1,
+      "symptom": 1,
+      "missed": 2,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 73.33333333333333,
+     "exactCI": [
+      48.04911034231324,
+      89.10272389681717
+     ],
+     "foundPct": 73.33333333333333,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 2
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 35488,
+      "p90": 35957,
+      "max": 36047
+     },
+     "cachedTokens": 1856,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 95,
+      "p90": 149.6,
+      "max": 160
+     },
+     "costPerCall": 0.007119119999999999,
+     "billedPerCall": 0.007099322666666668,
+     "ttftMs": {
+      "n": 15,
+      "p50": 3818,
+      "p90": 4009.2,
+      "max": 4057
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 11304,
+      "p90": 14970,
+      "max": 16031
+     }
+    },
+    "50000": {
+     "n": 15,
+     "counts": {
+      "exact": 11,
+      "wrong_number": 1,
+      "decoy": 0,
+      "component": 1,
+      "symptom": 1,
+      "missed": 1,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 73.33333333333333,
+     "exactCI": [
+      48.04911034231324,
+      89.10272389681717
+     ],
+     "foundPct": 80,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 2
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 70017,
+      "p90": 71119.2,
+      "max": 71353
+     },
+     "cachedTokens": 71296,
+     "cacheHits": [
+      "t050k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 91,
+      "p90": 150.4,
+      "max": 155
+     },
+     "costPerCall": 0.01406748,
+     "billedPerCall": 0.013306989333333333,
+     "ttftMs": {
+      "n": 14,
+      "p50": 11516.5,
+      "p90": 11984.300000000001,
+      "max": 12107
+     },
+     "totalMs": {
+      "n": 14,
+      "p50": 24137,
+      "p90": 33555.4,
+      "max": 33853
+     }
+    },
+    "100000": {
+     "n": 15,
+     "counts": {
+      "exact": 8,
+      "wrong_number": 1,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 6,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 53.333333333333336,
+     "exactCI": [
+      30.11663015105079,
+      75.19077474025356
+     ],
+     "foundPct": 60,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 2
+      },
+      "1": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 1
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 140729,
+      "p90": 142474.4,
+      "max": 143861
+     },
+     "cachedTokens": 141696,
+     "cacheHits": [
+      "t100k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 115,
+      "p90": 155.6,
+      "max": 175
+     },
+     "costPerCall": 0.028219559999999998,
+     "billedPerCall": 0.026708136,
+     "ttftMs": {
+      "n": 14,
+      "p50": 40581,
+      "p90": 41422.7,
+      "max": 42212
+     },
+     "totalMs": {
+      "n": 14,
+      "p50": 71372.5,
+      "p90": 84561.1,
+      "max": 88936
+     }
+    }
+   },
+   "nonExact": [
+    {
+     "id": "t025k-d025-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 419,
+     "needle": 105,
+     "kind": "symptom",
+     "component": "rabbitmq",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d050-r2",
+     "scenario": "queue",
+     "verdict": "missed",
+     "line": 7,
+     "needle": 78,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d000-r1",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1716,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d050-r1",
+     "scenario": "queue",
+     "verdict": "missed",
+     "line": 228,
+     "needle": 214,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d025-r2",
+     "scenario": "pool",
+     "verdict": "component",
+     "line": 867,
+     "needle": 217,
+     "kind": "symptom",
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d025-r1",
+     "scenario": "queue",
+     "verdict": "missed",
+     "line": 223,
+     "needle": 216,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d075-r1",
+     "scenario": "queue",
+     "verdict": "missed",
+     "line": 145,
+     "needle": 113,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d100-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1722,
+     "needle": 1721,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d050-r2",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 1735,
+     "needle": 868,
+     "kind": "symptom",
+     "component": "k8s-event",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d000-r1",
+     "scenario": "hpa",
+     "verdict": "component",
+     "line": 319,
+     "needle": 1,
+     "kind": "change",
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d000-r2",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 154,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "k8s-event",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t025k-d025-r3",
+     "scenario": "pool",
+     "verdict": "missed",
+     "line": 274,
+     "needle": 107,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d075-r3",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 1790,
+     "needle": 1298,
+     "kind": "bg-post",
+     "component": "nginx-ingress",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d000-r2",
+     "scenario": "queue",
+     "verdict": "symptom",
+     "line": 872,
+     "needle": 1,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t050k-d050-r1",
+     "scenario": "pool",
+     "verdict": "wrong_number",
+     "line": 820,
+     "needle": 430,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d025-r3",
+     "scenario": "hpa",
+     "verdict": "symptom",
+     "line": 1731,
+     "needle": 433,
+     "kind": "symptom",
+     "component": "k8s-event",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t010k-d025-r3",
+     "scenario": "queue",
+     "verdict": "missed",
+     "line": 138,
+     "needle": 39,
+     "kind": "change",
+     "component": "k8s-audit",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d050-r3",
+     "scenario": "redis",
+     "verdict": "wrong_number",
+     "line": 1464,
+     "needle": 864,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    },
+    {
+     "id": "t100k-d025-r1",
+     "scenario": "pool",
+     "verdict": "symptom",
+     "line": 1736,
+     "needle": 435,
+     "kind": "symptom",
+     "component": "checkout-api",
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    }
+   ]
+  },
+  "nemotron-3.5-super-vl": {
+   "name": "NVIDIA Nemotron 3.5 Super VL",
+   "price": {
+    "input": 0.3,
+    "cachedInput": 0.06,
+    "output": 0.65
+   },
+   "n": 45,
+   "exact": 44,
+   "exactPct": 97.77777777777777,
+   "exactCI": [
+    88.43305361128118,
+    99.60665024772426
+   ],
+   "firstLengthWithMiss": 10000,
+   "spend": 0.5640039000000001,
+   "spendFirstPaste": 0.5799783000000001,
+   "cacheHits": [
+    "t050k-d000-r1 (66560 of 69616 prompt tokens)"
+   ],
+   "retriedCalls": 0,
+   "refusedAttempts": 0,
+   "attemptStatuses": {
+    "200": 45
+   },
+   "finish": {
+    "stop": 44,
+    "length": 1
+   },
+   "reruns": 0,
+   "byScenario": {
+    "cert": {
+     "n": 9,
+     "exact": 9
+    },
+    "hpa": {
+     "n": 9,
+     "exact": 9
+    },
+    "pool": {
+     "n": 9,
+     "exact": 9
+    },
+    "queue": {
+     "n": 9,
+     "exact": 8
+    },
+    "redis": {
+     "n": 9,
+     "exact": 9
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 15,
+     "counts": {
+      "exact": 14,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 1,
+      "error": 0
+     },
+     "exactPct": 93.33333333333333,
+     "exactCI": [
+      70.182922447576,
+      98.81334113938051
+     ],
+     "foundPct": 93.33333333333333,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 14597,
+      "p90": 15258.8,
+      "max": 15755
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 714,
+      "p90": 1043.4,
+      "max": 16384
+     },
+     "costPerCall": 0.00558762,
+     "billedPerCall": 0.00558762,
+     "ttftMs": {
+      "n": 15,
+      "p50": 829,
+      "p90": 1032.6,
+      "max": 1270
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 5439,
+      "p90": 7780.6,
+      "max": 102817
+     }
+    },
+    "25000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 35499,
+      "p90": 35968,
+      "max": 36058
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 15,
+      "p50": 947,
+      "p90": 1331.6,
+      "max": 2614
+     },
+     "costPerCall": 0.011316266666666666,
+     "billedPerCall": 0.011316266666666666,
+     "ttftMs": {
+      "n": 15,
+      "p50": 1194,
+      "p90": 1709.1999999999998,
+      "max": 3145
+     },
+     "totalMs": {
+      "n": 15,
+      "p50": 7182,
+      "p90": 12026,
+      "max": 17162
+     }
+    },
+    "50000": {
+     "n": 15,
+     "counts": {
+      "exact": 15,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      79.6110733695652,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 3,
+       "exact": 3
+      },
+      "1": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.25": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.5": {
+       "n": 3,
+       "exact": 3
+      },
+      "0.75": {
+       "n": 3,
+       "exact": 3
+      }
+     },
+     "promptTokens": {
+      "n": 15,
+      "p50": 70028,
+      "p90": 71130.2,
+      "max": 71364
+     },
+     "cachedTokens": 66560,
+     "cacheHits": [
+      "t050k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 15,
+      "p50": 937,
+      "p90": 1607,
+      "max": 2012
+     },
+     "costPerCall": 0.02176133333333333,
+     "billedPerCall": 0.020696373333333334,
+     "ttftMs": {
+      "n": 14,
+      "p50": 2022.5,
+      "p90": 2358.7,
+      "max": 3164
+     },
+     "totalMs": {
+      "n": 14,
+      "p50": 8595,
+      "p90": 12507.2,
+      "max": 25011
+     }
+    }
+   },
+   "nonExact": [
+    {
+     "id": "t010k-d025-r3",
+     "scenario": "queue",
+     "verdict": "invalid",
+     "line": null,
+     "needle": 39,
+     "kind": null,
+     "component": null,
+     "how": "empty",
+     "finish": "length",
+     "error": null
+    }
+   ]
+  },
+  "deepseek-v4-pro-0813": {
+   "name": "DeepSeek V4 Pro 0813",
+   "price": {
+    "input": 1.32,
+    "cachedInput": 0.044,
+    "output": 3.96
+   },
+   "n": 50,
+   "exact": 49,
+   "exactPct": 98,
+   "exactCI": [
+    89.50431352816304,
+    99.64608319110233
+   ],
+   "firstLengthWithMiss": 100000,
+   "spend": 5.344506112000001,
+   "spendFirstPaste": 5.474515200000001,
+   "cacheHits": [
+    "t100k-d000-r1 (101888 of 102119 prompt tokens)"
+   ],
+   "retriedCalls": 0,
+   "refusedAttempts": 0,
+   "attemptStatuses": {
+    "200": 50
+   },
+   "finish": {
+    "stop": 50
+   },
+   "reruns": 0,
+   "byScenario": {
+    "cert": {
+     "n": 10,
+     "exact": 9
+    },
+    "hpa": {
+     "n": 10,
+     "exact": 10
+    },
+    "pool": {
+     "n": 10,
+     "exact": 10
+    },
+    "queue": {
+     "n": 10,
+     "exact": 10
+    },
+    "redis": {
+     "n": 10,
+     "exact": 10
+    }
+   },
+   "byLength": {
+    "10000": {
+     "n": 10,
+     "counts": {
+      "exact": 10,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      72.24598312333835,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 2,
+       "exact": 2
+      },
+      "1": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 2,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 10,
+      "p50": 10821.5,
+      "p90": 11423.4,
+      "max": 11634
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 10,
+      "p50": 836,
+      "p90": 1449.399999999999,
+      "max": 4054
+     },
+     "costPerCall": 0.019099212,
+     "billedPerCall": 0.019099212,
+     "ttftMs": {
+      "n": 10,
+      "p50": 1329,
+      "p90": 1932.499999999999,
+      "max": 3944
+     },
+     "totalMs": {
+      "n": 10,
+      "p50": 7703.5,
+      "p90": 16031.8,
+      "max": 18046
+     }
+    },
+    "25000": {
+     "n": 10,
+     "counts": {
+      "exact": 10,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      72.24598312333835,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 2,
+       "exact": 2
+      },
+      "1": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 2,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 10,
+      "p50": 25918,
+      "p90": 26330.7,
+      "max": 26391
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 10,
+      "p50": 1272.5,
+      "p90": 2022.7999999999997,
+      "max": 2624
+     },
+     "costPerCall": 0.039886571999999995,
+     "billedPerCall": 0.039886571999999995,
+     "ttftMs": {
+      "n": 10,
+      "p50": 2061,
+      "p90": 2509.2999999999997,
+      "max": 2800
+     },
+     "totalMs": {
+      "n": 10,
+      "p50": 11520,
+      "p90": 15735.499999999996,
+      "max": 23453
+     }
+    },
+    "50000": {
+     "n": 10,
+     "counts": {
+      "exact": 10,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      72.24598312333835,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 2,
+       "exact": 2
+      },
+      "1": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 2,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 10,
+      "p50": 50989.5,
+      "p90": 51752.6,
+      "max": 51812
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 10,
+      "p50": 871,
+      "p90": 1356.3,
+      "max": 1476
+     },
+     "costPerCall": 0.071153148,
+     "billedPerCall": 0.071153148,
+     "ttftMs": {
+      "n": 10,
+      "p50": 3571.5,
+      "p90": 4530.2,
+      "max": 4748
+     },
+     "totalMs": {
+      "n": 10,
+      "p50": 9702.5,
+      "p90": 17402.9,
+      "max": 17663
+     }
+    },
+    "100000": {
+     "n": 10,
+     "counts": {
+      "exact": 9,
+      "wrong_number": 1,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 90,
+     "exactCI": [
+      59.58436145024278,
+      98.21242504842789
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 2,
+       "exact": 2
+      },
+      "1": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 2,
+       "exact": 1
+      },
+      "0.5": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 2,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 10,
+      "p50": 102401,
+      "p90": 103945,
+      "max": 104350
+     },
+     "cachedTokens": 101888,
+     "cacheHits": [
+      "t100k-d000-r1"
+     ],
+     "outputTokens": {
+      "n": 10,
+      "p50": 1227.5,
+      "p90": 2450.199999999999,
+      "max": 4963
+     },
+     "costPerCall": 0.14166345600000002,
+     "billedPerCall": 0.12866254719999998,
+     "ttftMs": {
+      "n": 9,
+      "p50": 6093,
+      "p90": 6596.4,
+      "max": 6790
+     },
+     "totalMs": {
+      "n": 9,
+      "p50": 14061,
+      "p90": 19760.4,
+      "max": 30582
+     }
+    },
+    "200000": {
+     "n": 10,
+     "counts": {
+      "exact": 10,
+      "wrong_number": 0,
+      "decoy": 0,
+      "component": 0,
+      "symptom": 0,
+      "missed": 0,
+      "invalid": 0,
+      "error": 0
+     },
+     "exactPct": 100,
+     "exactCI": [
+      72.24598312333835,
+      100
+     ],
+     "foundPct": 100,
+     "byDepth": {
+      "0": {
+       "n": 2,
+       "exact": 2
+      },
+      "1": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.25": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.5": {
+       "n": 2,
+       "exact": 2
+      },
+      "0.75": {
+       "n": 2,
+       "exact": 2
+      }
+     },
+     "promptTokens": {
+      "n": 10,
+      "p50": 204679.5,
+      "p90": 207673.9,
+      "max": 208141
+     },
+     "cachedTokens": 0,
+     "cacheHits": [],
+     "outputTokens": {
+      "n": 10,
+      "p50": 1277.5,
+      "p90": 1610.4999999999998,
+      "max": 1993
+     },
+     "costPerCall": 0.275649132,
+     "billedPerCall": 0.275649132,
+     "ttftMs": {
+      "n": 10,
+      "p50": 11864,
+      "p90": 12150.699999999999,
+      "max": 14119
+     },
+     "totalMs": {
+      "n": 10,
+      "p50": 19624.5,
+      "p90": 24562.399999999994,
+      "max": 35492
+     }
+    }
+   },
+   "nonExact": [
+    {
+     "id": "t100k-d025-r2",
+     "scenario": "cert",
+     "verdict": "wrong_number",
+     "line": 435,
+     "needle": 436,
+     "kind": null,
+     "component": null,
+     "how": "json",
+     "finish": "stop",
+     "error": null
+    }
+   ]
+  }
+ },
+ "pairs": [
+  {
+   "a": "openai-gpt-oss-120b",
+   "b": "deepseek-v4-flash-0731",
+   "shared": 60,
+   "onlyA": 0,
+   "onlyB": 27,
+   "p": 1.4901161193847656e-8
+  },
+  {
+   "a": "openai-gpt-oss-120b",
+   "b": "glm-5.3-flash",
+   "shared": 60,
+   "onlyA": 0,
+   "onlyB": 27,
+   "p": 1.4901161193847656e-8
+  },
+  {
+   "a": "openai-gpt-oss-120b",
+   "b": "mistral-3-14B",
+   "shared": 60,
+   "onlyA": 3,
+   "onlyB": 11,
+   "p": 0.057373046875
+  },
+  {
+   "a": "openai-gpt-oss-120b",
+   "b": "nemotron-3.5-super-vl",
+   "shared": 45,
+   "onlyA": 0,
+   "onlyB": 17,
+   "p": 0.0000152587890625
+  },
+  {
+   "a": "openai-gpt-oss-120b",
+   "b": "deepseek-v4-pro-0813",
+   "shared": 40,
+   "onlyA": 1,
+   "onlyB": 15,
+   "p": 0.000518798828125
+  },
+  {
+   "a": "deepseek-v4-flash-0731",
+   "b": "glm-5.3-flash",
+   "shared": 75,
+   "onlyA": 0,
+   "onlyB": 0,
+   "p": 1
+  },
+  {
+   "a": "deepseek-v4-flash-0731",
+   "b": "mistral-3-14B",
+   "shared": 60,
+   "onlyA": 19,
+   "onlyB": 0,
+   "p": 0.000003814697265625
+  },
+  {
+   "a": "deepseek-v4-flash-0731",
+   "b": "nemotron-3.5-super-vl",
+   "shared": 45,
+   "onlyA": 1,
+   "onlyB": 0,
+   "p": 1
+  },
+  {
+   "a": "deepseek-v4-flash-0731",
+   "b": "deepseek-v4-pro-0813",
+   "shared": 50,
+   "onlyA": 1,
+   "onlyB": 0,
+   "p": 1
+  },
+  {
+   "a": "glm-5.3-flash",
+   "b": "mistral-3-14B",
+   "shared": 60,
+   "onlyA": 19,
+   "onlyB": 0,
+   "p": 0.000003814697265625
+  },
+  {
+   "a": "glm-5.3-flash",
+   "b": "nemotron-3.5-super-vl",
+   "shared": 45,
+   "onlyA": 1,
+   "onlyB": 0,
+   "p": 1
+  },
+  {
+   "a": "glm-5.3-flash",
+   "b": "deepseek-v4-pro-0813",
+   "shared": 50,
+   "onlyA": 1,
+   "onlyB": 0,
+   "p": 1
+  },
+  {
+   "a": "mistral-3-14B",
+   "b": "nemotron-3.5-super-vl",
+   "shared": 45,
+   "onlyA": 0,
+   "onlyB": 11,
+   "p": 0.0009765625
+  },
+  {
+   "a": "mistral-3-14B",
+   "b": "deepseek-v4-pro-0813",
+   "shared": 40,
+   "onlyA": 1,
+   "onlyB": 14,
+   "p": 0.0009765625
+  },
+  {
+   "a": "nemotron-3.5-super-vl",
+   "b": "deepseek-v4-pro-0813",
+   "shared": 30,
+   "onlyA": 0,
+   "onlyB": 0,
+   "p": 1
+  }
+ ]
+}

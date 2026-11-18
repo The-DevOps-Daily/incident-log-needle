@@ -1,0 +1,497 @@
+[
+ {
+  "method": "whole",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 15,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 0,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 15,
+  "exactCI": [
+   79.6110733695652,
+   100
+  ],
+  "needleSent": 15,
+  "keptLines": null,
+  "promptTokens": 102350,
+  "costPerQuery": 0.01448175866666667,
+  "wallP50": 5021.5,
+  "wallP90": 7383.800000000001,
+  "failedCalls": 0,
+  "vsWhole": null
+ },
+ {
+  "method": "grep-errors",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 3,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 6,
+   "missed": 1,
+   "invalid": 5,
+   "error": 0
+  },
+  "exact": 3,
+  "exactCI": [
+   7.047420643610412,
+   45.18593533465045
+  ],
+  "needleSent": 3,
+  "keptLines": 91,
+  "promptTokens": 6226,
+  "costPerQuery": 0.0019117840000000001,
+  "wallP50": 19727,
+  "wallP90": 51045.2,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 12,
+   "p": 0.00048828125
+  }
+ },
+ {
+  "method": "grep-changes",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 15,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 0,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 15,
+  "exactCI": [
+   79.6110733695652,
+   100
+  ],
+  "needleSent": 15,
+  "keptLines": 272,
+  "promptTokens": 15073,
+  "costPerQuery": 0.002166826666666667,
+  "wallP50": 2074,
+  "wallP90": 3811.2,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 0,
+   "p": 1
+  }
+ },
+ {
+  "method": "chunks",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 14,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 1,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 14,
+  "exactCI": [
+   70.182922447576,
+   98.81334113938051
+  ],
+  "needleSent": 14,
+  "keptLines": 4,
+  "promptTokens": 106642,
+  "costPerQuery": 0.022813755999999998,
+  "wallP50": 43117,
+  "wallP90": 64647.4,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 1,
+   "p": 1
+  }
+ },
+ {
+  "method": "whole",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 15,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 0,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 15,
+  "exactCI": [
+   79.6110733695652,
+   100
+  ],
+  "needleSent": 15,
+  "keptLines": null,
+  "promptTokens": 204724,
+  "costPerQuery": 0.028859179999999998,
+  "wallP50": 9060,
+  "wallP90": 10799.800000000001,
+  "failedCalls": 0,
+  "vsWhole": null
+ },
+ {
+  "method": "grep-errors",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 3,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 8,
+   "missed": 0,
+   "invalid": 4,
+   "error": 0
+  },
+  "exact": 3,
+  "exactCI": [
+   7.047420643610412,
+   45.18593533465045
+  ],
+  "needleSent": 3,
+  "keptLines": 188,
+  "promptTokens": 11898,
+  "costPerQuery": 0.0028525653333333336,
+  "wallP50": 26848,
+  "wallP90": 48929.79999999999,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 12,
+   "p": 0.00048828125
+  }
+ },
+ {
+  "method": "grep-changes",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 15,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 0,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 15,
+  "exactCI": [
+   79.6110733695652,
+   100
+  ],
+  "needleSent": 15,
+  "keptLines": 543,
+  "promptTokens": 29074,
+  "costPerQuery": 0.0041453160000000005,
+  "wallP50": 2646,
+  "wallP90": 5118.4,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 0,
+   "p": 1
+  }
+ },
+ {
+  "method": "chunks",
+  "model": "deepseek-v4-flash-0731",
+  "name": "DeepSeek V4 Flash 0731",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 14,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 1,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 14,
+  "exactCI": [
+   70.182922447576,
+   98.81334113938051
+  ],
+  "needleSent": 14,
+  "keptLines": 6,
+  "promptTokens": 210334,
+  "costPerQuery": 0.04729064666666667,
+  "wallP50": 68820,
+  "wallP90": 82889.6,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 0,
+   "onlyWhole": 1,
+   "p": 1
+  }
+ },
+ {
+  "method": "whole",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 6,
+   "wrong_number": 0,
+   "decoy": 2,
+   "component": 0,
+   "symptom": 7,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 6,
+  "exactCI": [
+   19.824228082594665,
+   64.25355724349228
+  ],
+  "needleSent": 15,
+  "keptLines": null,
+  "promptTokens": 101815,
+  "costPerQuery": 0.010727000000000002,
+  "wallP50": 20069,
+  "wallP90": 27093.8,
+  "failedCalls": 0,
+  "vsWhole": null
+ },
+ {
+  "method": "grep-errors",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 3,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 12,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 3,
+  "exactCI": [
+   7.047420643610412,
+   45.18593533465045
+  ],
+  "needleSent": 3,
+  "keptLines": 91,
+  "promptTokens": 6148,
+  "costPerQuery": 0.0009035533333333333,
+  "wallP50": 6062,
+  "wallP90": 8287.6,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 1,
+   "onlyWhole": 4,
+   "p": 0.375
+  }
+ },
+ {
+  "method": "grep-changes",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 13,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 2,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 13,
+  "exactCI": [
+   62.11750079348376,
+   96.26395301086407
+  ],
+  "needleSent": 15,
+  "keptLines": 272,
+  "promptTokens": 15134,
+  "costPerQuery": 0.0018147866666666666,
+  "wallP50": 7694,
+  "wallP90": 9342.6,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 7,
+   "onlyWhole": 0,
+   "p": 0.015625
+  }
+ },
+ {
+  "method": "chunks",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 100000,
+  "n": 15,
+  "counts": {
+   "exact": 11,
+   "wrong_number": 0,
+   "decoy": 1,
+   "component": 1,
+   "symptom": 2,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 11,
+  "exactCI": [
+   48.04911034231324,
+   89.10272389681717
+  ],
+  "needleSent": 11,
+  "keptLines": 15,
+  "promptTokens": 106497,
+  "costPerQuery": 0.01418088,
+  "wallP50": 26322,
+  "wallP90": 38069.2,
+  "failedCalls": 0,
+  "vsWhole": {
+   "shared": 15,
+   "onlyThis": 5,
+   "onlyWhole": 0,
+   "p": 0.0625
+  }
+ },
+ {
+  "method": "grep-errors",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 3,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 2,
+   "symptom": 10,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 3,
+  "exactCI": [
+   7.047420643610412,
+   45.18593533465045
+  ],
+  "needleSent": 3,
+  "keptLines": 188,
+  "promptTokens": 11653,
+  "costPerQuery": 0.00151584,
+  "wallP50": 7554,
+  "wallP90": 10085.8,
+  "failedCalls": 0,
+  "vsWhole": null
+ },
+ {
+  "method": "grep-changes",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 200000,
+  "n": 15,
+  "counts": {
+   "exact": 13,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 2,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 13,
+  "exactCI": [
+   62.11750079348376,
+   96.26395301086407
+  ],
+  "needleSent": 15,
+  "keptLines": 543,
+  "promptTokens": 29096,
+  "costPerQuery": 0.0032588600000000006,
+  "wallP50": 7658,
+  "wallP90": 12428.6,
+  "failedCalls": 0,
+  "vsWhole": null
+ },
+ {
+  "method": "chunks",
+  "model": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "tokens": 200000,
+  "n": 3,
+  "counts": {
+   "exact": 3,
+   "wrong_number": 0,
+   "decoy": 0,
+   "component": 0,
+   "symptom": 0,
+   "missed": 0,
+   "invalid": 0,
+   "error": 0
+  },
+  "exact": 3,
+  "exactCI": [
+   43.84939195509822,
+   100
+  ],
+  "needleSent": 3,
+  "keptLines": 24,
+  "promptTokens": 209927,
+  "costPerQuery": 0.027327066666666667,
+  "wallP50": 28778,
+  "wallP90": 36863.6,
+  "failedCalls": 0,
+  "vsWhole": null
+ }
+]

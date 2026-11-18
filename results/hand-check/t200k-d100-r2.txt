@@ -1,0 +1,120 @@
+# t200k-d100-r2 (pool, 200000 tokens, depth 1, 3625 lines)
+Prompt summary: Checkout (POST /api/checkout) started timing out with HTTP 504 at about 16:45 UTC on 2026-11-10.
+
+NEEDLE        3477	2026-11-10T16:45:26.270Z pgbouncer[812]: LOG RELOAD: pool "orders" default_pool_size changed 50 -> 6 (config rev b9c438f)
+harmless       520	2026-11-10T13:27:20.220Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.4 -> search-api:4.5"
+harmless      1076	2026-11-10T14:04:31.653Z pgbouncer[812]: LOG RELOAD: pool "reporting" reserve_pool_size changed 0 -> 1 (config rev 38d7a16)
+harmless      1144	2026-11-10T14:09:37.169Z pgbouncer[812]: LOG RELOAD: pool "analytics" default_pool_size changed 10 -> 12 (config rev 9261ee5)
+harmless      1191	2026-11-10T14:12:42.863Z pgbouncer[812]: LOG RELOAD: pool "analytics" default_pool_size changed 12 -> 14 (config rev 929edc6)
+harmless      2033	2026-11-10T15:11:43.718Z k8s-event Normal ScalingReplicaSet deployment/catalog-api Scaled up replica set catalog-api-ls88wg2k8 to 3
+harmless      2517	2026-11-10T15:42:46.015Z pgbouncer[812]: LOG RELOAD: pool "reporting" reserve_pool_size changed 1 -> 2 (config rev 5f95021)
+
+Loud lines before the outage:
+    80	2026-11-10T12:58:37.535Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=1499d41a
+   140	2026-11-10T13:02:34.048Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+   145	2026-11-10T13:02:47.347Z nginx-ingress [warn] 31#31: *490818 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/8/56/0000017854 while reading upstream, client: 203.0.113.97, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+   226	2026-11-10T13:08:52.131Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+   270	2026-11-10T13:11:31.055Z k8s-event Warning FailedScheduling pod/report-export-29380473-49kpt 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+   277	2026-11-10T13:12:21.231Z k8s-event Warning FailedScheduling pod/report-export-29387831-qqs6m 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+   291	2026-11-10T13:13:54.107Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_80138d7fd4 attempt=1 err="image decode: unexpected EOF"
+   296	2026-11-10T13:14:07.061Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=39894722
+   319	2026-11-10T13:15:23.598Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_0469c10395 attempt=1 err="image decode: unexpected EOF"
+   369	2026-11-10T13:18:17.090Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=8d8825ab
+   393	2026-11-10T13:19:40.969Z k8s-event Warning FailedScheduling pod/report-export-29386304-flfsb 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+   400	2026-11-10T13:19:54.492Z catalog-api level=warn msg="(node:1) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."
+   415	2026-11-10T13:20:44.978Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_254146aef1 attempt=1 err="image decode: unexpected EOF"
+   435	2026-11-10T13:21:59.699Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=2fe342b7
+   595	2026-11-10T13:32:00.312Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=674a8ce1
+   596	2026-11-10T13:32:00.981Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_86504e36de attempt=1 err="image decode: unexpected EOF"
+   598	2026-11-10T13:32:06.409Z nginx-ingress [warn] 31#31: *619919 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/7/30/0000053418 while reading upstream, client: 203.0.113.190, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+   628	2026-11-10T13:33:31.835Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_7f8bd95bcb attempt=1 err="image decode: unexpected EOF"
+   637	2026-11-10T13:34:16.803Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=8386f1d4
+   643	2026-11-10T13:34:31.748Z nginx-ingress 203.0.113.195 "GET /api/search?q=%ff%fe HTTP/1.1" 500 212 rt=0.004 upstream=search-api:8080
+   644	2026-11-10T13:34:33.659Z search-api level=error msg="invalid query encoding" q_len=6 err="malformed UTF-8"
+   740	2026-11-10T13:41:01.941Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=f5c5b3f0
+   753	2026-11-10T13:42:42.188Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=8b46b030
+   801	2026-11-10T13:46:21.529Z k8s-event Warning FailedScheduling pod/report-export-29383566-7jg9w 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+   898	2026-11-10T13:52:29.200Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_a1d645663d attempt=1 err="image decode: unexpected EOF"
+   941	2026-11-10T13:55:45.729Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_46a60e2ee9 attempt=1 err="image decode: unexpected EOF"
+   992	2026-11-10T13:59:02.372Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_67694c487e attempt=1 err="image decode: unexpected EOF"
+  1081	2026-11-10T14:04:42.580Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_dc3c762665 attempt=1 err="image decode: unexpected EOF"
+  1121	2026-11-10T14:07:59.922Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=048c2c76
+  1168	2026-11-10T14:11:18.293Z nginx-ingress 203.0.113.4 "GET /api/search?q=%ff%fe HTTP/1.1" 500 212 rt=0.004 upstream=search-api:8080
+  1170	2026-11-10T14:11:26.979Z search-api level=error msg="invalid query encoding" q_len=6 err="malformed UTF-8"
+  1184	2026-11-10T14:12:29.879Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_0127d2b5f8 attempt=1 err="image decode: unexpected EOF"
+  1217	2026-11-10T14:14:19.036Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=82e6ae17
+  1225	2026-11-10T14:15:01.982Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=8234bb07
+  1233	2026-11-10T14:15:26.957Z search-api level=warn msg="DeprecationWarning: config key search.timeout is deprecated, use search.timeout_ms"
+  1330	2026-11-10T14:22:24.537Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=9f9f920d
+  1368	2026-11-10T14:24:17.234Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_2ff14c6c76 attempt=1 err="image decode: unexpected EOF"
+  1380	2026-11-10T14:25:09.514Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=e44b7453
+  1381	2026-11-10T14:25:12.108Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=cb47f812
+  1419	2026-11-10T14:28:09.462Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_a1bf5bbe49 attempt=1 err="image decode: unexpected EOF"
+  1434	2026-11-10T14:28:56.700Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=2a5bfea3
+  1475	2026-11-10T14:32:40.502Z nginx-ingress [warn] 31#31: *801919 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/1/12/0000010972 while reading upstream, client: 203.0.113.218, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  1520	2026-11-10T14:35:57.924Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  1540	2026-11-10T14:37:24.515Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  1561	2026-11-10T14:38:57.444Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=3c977470
+  1569	2026-11-10T14:39:28.635Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  1697	2026-11-10T14:48:12.510Z redis-cache 1:M 10 Nov 2026 14:48:12.510 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+  1744	2026-11-10T14:51:49.031Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_d03c1a042a attempt=1 err="image decode: unexpected EOF"
+  1745	2026-11-10T14:51:49.848Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=feb34900
+  1770	2026-11-10T14:54:06.727Z nginx-ingress [warn] 31#31: *414441 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/1/58/0000024169 while reading upstream, client: 203.0.113.218, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  1797	2026-11-10T14:56:04.325Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_d01cb465d0 attempt=1 err="image decode: unexpected EOF"
+  1910	2026-11-10T15:03:48.825Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_4255fb3429 attempt=1 err="image decode: unexpected EOF"
+  1936	2026-11-10T15:05:30.366Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=170f0198
+  1942	2026-11-10T15:05:47.474Z k8s-event Warning FailedScheduling pod/report-export-29386975-w6q8s 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+  2011	2026-11-10T15:10:09.541Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=61233c10
+  2052	2026-11-10T15:13:01.163Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  2053	2026-11-10T15:13:05.762Z catalog-api level=warn msg="(node:1) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."
+  2060	2026-11-10T15:13:30.499Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=fbe5e9d4
+  2094	2026-11-10T15:15:53.801Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  2117	2026-11-10T15:17:21.449Z nginx-ingress 203.0.113.14 "GET /api/search?q=%ff%fe HTTP/1.1" 500 212 rt=0.004 upstream=search-api:8080
+  2118	2026-11-10T15:17:33.633Z search-api level=error msg="invalid query encoding" q_len=6 err="malformed UTF-8"
+  2130	2026-11-10T15:18:02.565Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=8f79af1c
+  2144	2026-11-10T15:18:55.260Z k8s-event Warning Deprecated job/report-export batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob
+  2194	2026-11-10T15:21:49.287Z search-api level=warn msg="DeprecationWarning: config key search.timeout is deprecated, use search.timeout_ms"
+  2252	2026-11-10T15:25:31.421Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=9b412eb0
+  2328	2026-11-10T15:29:29.282Z cart-api level=error msg="redis connection reset by peer, reconnecting" addr=redis-cache:6379
+  2343	2026-11-10T15:30:31.373Z redis-cache 1:M 10 Nov 2026 15:30:31.373 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+  2395	2026-11-10T15:33:14.703Z nginx-ingress [warn] 31#31: *161119 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/6/92/0000031298 while reading upstream, client: 203.0.113.206, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  2398	2026-11-10T15:33:28.173Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=06b29b0d
+  2424	2026-11-10T15:34:42.112Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_900cf89e8f attempt=1 err="image decode: unexpected EOF"
+  2465	2026-11-10T15:38:04.554Z redis-cache 1:M 10 Nov 2026 15:38:04.554 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+  2485	2026-11-10T15:39:55.461Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_4c8c231a7c attempt=1 err="image decode: unexpected EOF"
+  2585	2026-11-10T15:47:11.696Z redis-cache 1:M 10 Nov 2026 15:47:11.696 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+  2632	2026-11-10T15:50:35.606Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_890266bd98 attempt=1 err="image decode: unexpected EOF"
+  2641	2026-11-10T15:51:04.119Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=cbb012cd
+  2660	2026-11-10T15:51:30.539Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=9a6f7831
+  2714	2026-11-10T15:55:02.178Z k8s-event Warning FailedScheduling pod/report-export-29385283-hhd9c 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+  2730	2026-11-10T15:55:58.698Z catalog-api level=warn msg="(node:1) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."
+  2744	2026-11-10T15:57:19.787Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=4103ce84
+  2760	2026-11-10T15:58:16.727Z nginx-ingress 203.0.113.46 "GET /api/search?q=%ff%fe HTTP/1.1" 500 212 rt=0.004 upstream=search-api:8080
+  2763	2026-11-10T15:58:31.533Z search-api level=error msg="invalid query encoding" q_len=6 err="malformed UTF-8"
+  2804	2026-11-10T16:00:20.238Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_0785d88d62 attempt=1 err="image decode: unexpected EOF"
+  2836	2026-11-10T16:02:34.959Z redis-cache 1:M 10 Nov 2026 16:02:34.959 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition.
+  2858	2026-11-10T16:04:20.062Z nginx-ingress [warn] 31#31: *636630 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/8/61/0000056992 while reading upstream, client: 203.0.113.187, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  2909	2026-11-10T16:07:26.891Z nginx-ingress [warn] 31#31: *330892 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/2/63/0000065109 while reading upstream, client: 203.0.113.38, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  2943	2026-11-10T16:09:28.093Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=c8aab302
+  2965	2026-11-10T16:10:48.056Z k8s-event Warning FailedScheduling pod/report-export-29386819-brfs4 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+  2974	2026-11-10T16:11:25.921Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=bda1cfa9
+  2992	2026-11-10T16:12:36.671Z k8s-event Warning FailedScheduling pod/report-export-29381243-wpfxn 0/6 nodes are available: 6 Insufficient cpu. preemption: 0/6 nodes are available: 6 No preemption victims found for incoming pod.
+  3086	2026-11-10T16:19:17.795Z search-api level=warn msg="upstream retry" upstream=recommendations attempt=1 err="context deadline exceeded" req=7da34f5f
+  3257	2026-11-10T16:31:04.894Z nginx-ingress [warn] 31#31: *534484 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/4/44/0000091002 while reading upstream, client: 203.0.113.85, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+  3402	2026-11-10T16:40:26.402Z nginx-ingress [warn] 31#31: *431252 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/3/55/0000038026 while reading upstream, client: 203.0.113.133, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+
+First 12 lines of the outage:
+  3478	2026-11-10T16:45:26.724Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=5a05ba46088b4771
+  3479	2026-11-10T16:45:26.879Z rabbitmq [info] <0.4739.0> accepting AMQP connection 10.244.6.50:54792 -> 10.244.2.3:5672
+  3480	2026-11-10T16:45:28.387Z pgbouncer[812]: WARNING pool "orders": 120 clients waiting, server connections 6/6 in use, longest wait 27.5s
+  3481	2026-11-10T16:45:28.965Z catalog-api level=info msg="product loaded" product_id=2690 duration_ms=1
+  3482	2026-11-10T16:45:28.974Z nginx-ingress 192.0.2.249 "GET /api/search?q=tent HTTP/1.1" 200 13119 rt=0.070 upstream=search-api:8080
+  3483	2026-11-10T16:45:30.835Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=ef50e8b90d985745
+  3484	2026-11-10T16:45:31.623Z checkout-api level=info msg="order placed" order_id=ord_798ef676 items=1 total_eur=66.65 duration_ms=378 trace_id=e340b22fcc347ef5
+  3485	2026-11-10T16:45:33.155Z search-api level=info msg="search served" q_len=14 hits=292 duration_ms=58 cache=miss
+  3486	2026-11-10T16:45:37.388Z pgbouncer[812]: WARNING pool "orders": 92 clients waiting, server connections 6/6 in use, longest wait 9.7s
+  3487	2026-11-10T16:45:38.682Z alertmanager [firing] CheckoutErrorRate severity=page summary="5xx ratio 0.65 on POST /api/checkout"
+  3488	2026-11-10T16:45:38.767Z nginx-ingress 198.51.100.90 "GET /api/cart HTTP/1.1" 200 19766 rt=0.071 upstream=cart-api:8080
+  3489	2026-11-10T16:45:39.662Z config-agent level=info msg="config in sync" target=redis-cache rev=88
+
+DECOY         3543	2026-11-10T16:46:33.609Z k8s-event Warning OOMKilling pod/checkout-api-lt2qdh29c-k8qs6 Memory cgroup out of memory: Killed process 1 (checkout-api) total-vm:2214556kB, anon-rss:1048576kB

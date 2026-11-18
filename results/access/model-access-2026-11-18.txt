@@ -1,0 +1,20 @@
+GET /v1/models on 2026-11-18T11:32:27.793Z: 78 models listed
+
+openai-gpt-oss-120b          ctx 128000   HTTP 200 1462 ms reasoning chars 134 answer "ok" $0.000038
+deepseek-v4-flash-0731       ctx 1048576  HTTP 200 698 ms reasoning chars 123 answer "ok" $0.000023
+glm-5.3-flash                ctx 1048576  HTTP 200 1337 ms reasoning chars 305 answer "ok" $0.000037
+mistral-3-14B                ctx 262144   HTTP 200 754 ms reasoning chars 0 answer "Got it." $0.000004
+nemotron-3.5-super-vl        ctx 1048576  HTTP 200 1094 ms reasoning chars 139 answer "ok" $0.000030
+deepseek-v4.1-flash          ctx 1048576  HTTP 200 777 ms reasoning chars 145 answer "ok" $0.000057
+reflection-beam              ctx 1048576  HTTP 200 910 ms reasoning chars 53 answer "ok" $0.000055
+deepseek-3.2                 ctx 163840   HTTP 200 1134 ms reasoning chars 0 answer "ok" $0.000011
+mimo-v2.5-pro                ctx 262144   HTTP 200 864 ms reasoning chars 53 answer "ok" $0.000069
+kimi-k2.6                    ctx 262144   HTTP 400 290 ms reasoning chars 0 error {"error":{"message":"temperature must be 1 for this model","type":"invalid_request_error"},"message":"temperature must be 1 for this model","status_code":400}
+
+deepseek-v4-pro-0813         ctx 1048576  HTTP 200 1190 ms reasoning chars 43 answer "ok" $0.000177
+glm-5.3                      ctx 1048576  HTTP 200 685 ms reasoning chars 175 answer "ok" $0.000224
+deepseek-v4-pro              ctx 1048576  HTTP 200 552 ms reasoning chars 0 answer "ok" $0.000035
+qwen3.8-max                  ctx 1000000  HTTP 200 679 ms reasoning chars 0 answer "ok" $0.000070
+kimi-k3.1-pro                ctx 1048576  HTTP 200 1174 ms reasoning chars 257 answer "ok" $0.000882
+openai-gpt-5.4-nano          ctx 400000   HTTP 200 879 ms reasoning chars 0 answer "ok" $0.000009
+anthropic-claude-5.5-haiku   ctx 1000000  HTTP 200 1399 ms reasoning chars 0 answer "ok" $0.000004

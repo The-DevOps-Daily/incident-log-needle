@@ -1,0 +1,26 @@
+# t010k-d050-r3 (pool, 10000 tokens, depth 0.5, 188 lines)
+Prompt summary: Checkout (POST /api/checkout) started timing out with HTTP 504 at about 16:38 UTC on 2026-11-16.
+
+NEEDLE          79	2026-11-16T16:31:34.418Z pgbouncer[812]: LOG RELOAD: pool "orders" default_pool_size changed 60 -> 5 (config rev 4798a00)
+harmless        28	2026-11-16T16:27:18.666Z pgbouncer[812]: LOG RELOAD: pool "reporting" reserve_pool_size changed 0 -> 1 (config rev 05eccf1)
+harmless        69	2026-11-16T16:30:49.548Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.0 -> search-api:4.1"
+harmless        73	2026-11-16T16:31:05.305Z pgbouncer[812]: LOG RELOAD: pool "analytics" default_pool_size changed 10 -> 12 (config rev 79f6953)
+
+Loud lines before the outage:
+    38	2026-11-16T16:28:07.338Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_110316eab3 attempt=1 err="image decode: unexpected EOF"
+
+First 12 lines of the outage:
+   157	2026-11-16T16:38:23.958Z nginx-ingress [error] 31#31: *631164 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 203.0.113.156, server: shop.example.com, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.244.3.18:8080/api/checkout"
+   158	2026-11-16T16:38:24.669Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=56f200ddf4cea459
+   159	2026-11-16T16:38:25.688Z pgbouncer[812]: WARNING pool "orders": 82 clients waiting, server connections 5/5 in use, longest wait 23.7s
+   160	2026-11-16T16:38:25.772Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=2110440892edbc57
+   161	2026-11-16T16:38:27.751Z nginx-ingress 192.0.2.160 "POST /api/checkout HTTP/1.1" 504 263 rt=60.001 upstream=checkout-api:8080
+   162	2026-11-16T16:38:28.100Z nginx-ingress [error] 31#31: *283782 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 203.0.113.167, server: shop.example.com, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.244.3.25:8080/api/checkout"
+   163	2026-11-16T16:38:28.301Z pgbouncer[812]: WARNING pool "orders": 122 clients waiting, server connections 5/5 in use, longest wait 16.1s
+   164	2026-11-16T16:38:29.502Z pgbouncer[812]: WARNING pool "orders": 96 clients waiting, server connections 5/5 in use, longest wait 6.5s
+   165	2026-11-16T16:38:29.758Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=d9a7c0fd68e1e3a8
+   166	2026-11-16T16:38:30.597Z checkout-api level=error msg="db acquire timeout" pool=orders waited_ms=5000 path=/api/checkout trace_id=5cc8fdb4b03aa773
+   167	2026-11-16T16:38:30.974Z k8s-event Warning OOMKilling pod/checkout-api-rtp9dmr5b-qpkqz Memory cgroup out of memory: Killed process 1 (checkout-api) total-vm:2214556kB, anon-rss:1048576kB
+   168	2026-11-16T16:38:31.269Z orders-db[3850]: LOG:  automatic vacuum of table "shop.public.sessions": index scans: 1, pages: 0 removed, 6737 remain, tuples: 4970 removed
+
+DECOY          167	2026-11-16T16:38:30.974Z k8s-event Warning OOMKilling pod/checkout-api-rtp9dmr5b-qpkqz Memory cgroup out of memory: Killed process 1 (checkout-api) total-vm:2214556kB, anon-rss:1048576kB

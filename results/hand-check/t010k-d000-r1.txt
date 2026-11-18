@@ -1,0 +1,28 @@
+# t010k-d000-r1 (cert, 10000 tokens, depth 0, 187 lines)
+Prompt summary: Checkout (POST /api/checkout) started failing with HTTP 502 at about 14:14 UTC on 2026-11-17.
+
+NEEDLE           1	2026-11-17T14:03:17.121Z cert-manager E1117 14:03:17.121847 controller.go:167] certificate default/payments-gateway-tls: renewal failed: ACME order 1329 invalid: DNS-01 challenge for pay.internal.example.com: NXDOMAIN; current certificate expires 2026-11-17T14:14:33Z; next attempt in 24h0m0s
+harmless        50	2026-11-17T14:06:35.208Z cert-manager I1117 14:06:35.208456 controller.go:198] certificate default/admin-tls: renewal scheduled for 2026-12-02T14:06:35Z
+harmless        52	2026-11-17T14:06:40.661Z k8s-audit user=deploy-bot verb=patch resource=deployments ns=shop name=search-api diff="image: search-api:4.0 -> search-api:4.1"
+harmless        62	2026-11-17T14:07:24.685Z cert-manager I1117 14:07:24.685795 controller.go:212] certificate default/shop-web-tls: renewed, new certificate expires 2027-02-15T14:07:24Z
+
+Loud lines before the outage:
+     1	2026-11-17T14:03:17.121Z cert-manager E1117 14:03:17.121847 controller.go:167] certificate default/payments-gateway-tls: renewal failed: ACME order 1329 invalid: DNS-01 challenge for pay.internal.example.com: NXDOMAIN; current certificate expires 2026-11-17T14:14:33Z; next attempt in 24h0m0s
+    36	2026-11-17T14:05:59.188Z nginx-ingress [warn] 31#31: *261451 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/2/66/0000055456 while reading upstream, client: 203.0.113.174, server: shop.example.com, request: "GET /api/search?q=boots HTTP/1.1"
+   142	2026-11-17T14:13:37.647Z worker level=error msg="job failed, will retry" job=thumbnail.render id=j_be6b0ffa0c attempt=1 err="image decode: unexpected EOF"
+
+First 12 lines of the outage:
+   156	2026-11-17T14:14:34.080Z checkout-api level=error msg="payment authorize failed" upstream=payments-gateway err="x509: certificate has expired or is not yet valid: current time 2026-11-17T14:14:34Z is after 2026-11-17T14:14:33Z" trace_id=7c05026a73c4c681
+   157	2026-11-17T14:14:34.287Z checkout-api level=info msg="order placed" order_id=ord_20014ae7 items=4 total_eur=39.30 duration_ms=302 trace_id=60b418d6d45426cf
+   158	2026-11-17T14:14:35.908Z checkout-api level=error msg="payment authorize failed" upstream=payments-gateway err="x509: certificate has expired or is not yet valid: current time 2026-11-17T14:14:35Z is after 2026-11-17T14:14:33Z" trace_id=184b774667b5f999
+   159	2026-11-17T14:14:36.720Z checkout-api level=error msg="payment authorize failed" upstream=payments-gateway err="x509: certificate has expired or is not yet valid: current time 2026-11-17T14:14:36Z is after 2026-11-17T14:14:33Z" trace_id=b590b0b60ac1dcd0
+   160	2026-11-17T14:14:37.429Z search-api level=info msg="search served" q_len=11 hits=91 duration_ms=109 cache=hit
+   161	2026-11-17T14:14:38.214Z nginx-ingress 203.0.113.158 "POST /api/cart/items HTTP/1.1" 201 17352 rt=0.115 upstream=cart-api:8080
+   162	2026-11-17T14:14:39.553Z nginx-ingress [error] 31#31: *153269 upstream prematurely closed connection while reading response header from upstream, client: 203.0.113.81, server: shop.example.com, request: "POST /api/checkout HTTP/1.1", upstream: "http://10.244.3.28:8080/api/checkout"
+   163	2026-11-17T14:14:39.840Z nginx-ingress 203.0.113.245 "GET /api/products/6499 HTTP/1.1" 200 7218 rt=0.138 upstream=catalog-api:8080
+   164	2026-11-17T14:14:39.869Z checkout-api level=error msg="circuit breaker opened" dependency=payments-gateway consecutive_failures=50 window=30s
+   165	2026-11-17T14:14:39.992Z nginx-ingress 192.0.2.172 "GET /api/products/5077 HTTP/1.1" 200 23237 rt=0.071 upstream=catalog-api:8080
+   166	2026-11-17T14:14:40.895Z nginx-ingress 198.51.100.110 "GET /api/cart HTTP/1.1" 200 2760 rt=0.108 upstream=cart-api:8080
+   167	2026-11-17T14:14:42.650Z search-api level=info msg="search served" q_len=14 hits=397 duration_ms=46 cache=hit
+
+DECOY          164	2026-11-17T14:14:39.869Z checkout-api level=error msg="circuit breaker opened" dependency=payments-gateway consecutive_failures=50 window=30s

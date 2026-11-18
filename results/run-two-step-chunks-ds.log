@@ -1,0 +1,32 @@
+stamp 1fca1125583773f1; to do 30; spend so far $11.0753 of cap $14
+chunks deepseek-v4-flash-0731 t100k-d000-r1 final=ok kept=6 spent=$11.0986
+chunks deepseek-v4-flash-0731 t100k-d000-r2 final=ok kept=7 spent=$11.1224
+chunks deepseek-v4-flash-0731 t100k-d000-r3 final=ok kept=3 spent=$11.1453
+chunks deepseek-v4-flash-0731 t100k-d025-r1 final=ok kept=7 spent=$11.1684
+chunks deepseek-v4-flash-0731 t100k-d025-r2 final=ok kept=4 spent=$11.1903
+chunks deepseek-v4-flash-0731 t100k-d025-r3 final=ok kept=1 spent=$11.2128
+chunks deepseek-v4-flash-0731 t100k-d050-r1 final=ok kept=4 spent=$11.2345
+chunks deepseek-v4-flash-0731 t100k-d050-r2 final=ok kept=4 spent=$11.2577
+chunks deepseek-v4-flash-0731 t100k-d050-r3 final=ok kept=4 spent=$11.2800
+chunks deepseek-v4-flash-0731 t100k-d075-r1 final=ok kept=3 spent=$11.3012
+chunks deepseek-v4-flash-0731 t100k-d075-r2 final=ok kept=1 spent=$11.3271
+chunks deepseek-v4-flash-0731 t100k-d075-r3 final=ok kept=1 spent=$11.3513
+chunks deepseek-v4-flash-0731 t100k-d100-r1 final=ok kept=4 spent=$11.3730
+chunks deepseek-v4-flash-0731 t100k-d100-r2 final=ok kept=3 spent=$11.3942
+chunks deepseek-v4-flash-0731 t100k-d100-r3 final=ok kept=4 spent=$11.4175
+chunks deepseek-v4-flash-0731 t200k-d000-r1 final=ok kept=13 spent=$11.4652
+chunks deepseek-v4-flash-0731 t200k-d000-r2 final=ok kept=4 spent=$11.5087
+chunks deepseek-v4-flash-0731 t200k-d000-r3 final=ok kept=5 spent=$11.5543
+chunks deepseek-v4-flash-0731 t200k-d025-r1 final=ok kept=8 spent=$11.6013
+chunks deepseek-v4-flash-0731 t200k-d025-r2 final=ok kept=1 spent=$11.6491
+chunks deepseek-v4-flash-0731 t200k-d025-r3 final=ok kept=6 spent=$11.6932
+chunks deepseek-v4-flash-0731 t200k-d050-r1 final=ok kept=11 spent=$11.7426
+chunks deepseek-v4-flash-0731 t200k-d050-r2 final=ok kept=2 spent=$11.7903
+chunks deepseek-v4-flash-0731 t200k-d050-r3 final=ok kept=13 spent=$11.8361
+chunks deepseek-v4-flash-0731 t200k-d075-r1 final=ok kept=6 spent=$11.8849
+chunks deepseek-v4-flash-0731 t200k-d075-r2 final=ok kept=2 spent=$11.9339
+chunks deepseek-v4-flash-0731 t200k-d075-r3 final=ok kept=10 spent=$11.9827
+chunks deepseek-v4-flash-0731 t200k-d100-r1 final=ok kept=5 spent=$12.0319
+chunks deepseek-v4-flash-0731 t200k-d100-r2 final=ok kept=7 spent=$12.0796
+chunks deepseek-v4-flash-0731 t200k-d100-r3 final=ok kept=6 spent=$12.1269
+done; spend $12.1269

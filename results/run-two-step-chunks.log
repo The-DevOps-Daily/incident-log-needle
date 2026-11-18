@@ -1,0 +1,2 @@
+stamp 1fca1125583773f1; to do 42; spend so far $11.0753 of cap $14
+chunks openai-gpt-oss-120b t200k-d025-r1 final=429 kept=0 spent=$11.0753

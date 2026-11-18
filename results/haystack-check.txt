@@ -1,0 +1,2 @@
+Checked 75 haystacks (cert 15, hpa 15, redis 15, queue 15, pool 15).
+Problems: 0

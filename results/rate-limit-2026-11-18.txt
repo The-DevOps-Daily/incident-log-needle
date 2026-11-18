@@ -1,0 +1,11 @@
+gpt-oss-120b daily token limit, 2026-11-18
+
+At about 12:4x UTC the chunked baseline at 200k started getting HTTP 429 on every gpt-oss-120b call.
+A one-word probe at 12:52 UTC returned:
+
+{"error":{"message":"Rate limit exceeded: tokens_per_day.","type":"rate_limit_exceeded_error"},"message":"Rate limit exceeded: tokens_per_day.","status_code":429}
+
+Tokens recorded for gpt-oss-120b that day across results/ (pilots, main run, baselines), from the usage
+blocks: 288 calls, 6,892,227 tokens. Calls lost when our machine restarted at about 12:35 UTC are not in
+that count, so the real total is somewhat higher. The 3 chunked 200k runs that failed with 429 are kept in
+results/two-step-failed/. The other 12 chunked 200k runs for gpt-oss-120b were not done.
