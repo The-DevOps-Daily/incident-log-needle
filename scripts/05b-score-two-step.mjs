@@ -6,11 +6,14 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildHaystack } from '../lib/haystack.mjs';
 import { readJsonl } from '../lib/spend.mjs';
+import { stampOf, readStamped, TWOSTEP_STAMP_FILES, RUN_STAMP_FILES } from '../lib/stamp.mjs';
 import { PRICES, callCost, cachedTokens } from '../lib/cost.mjs';
 import { verdict, VERDICTS, wilson, quantile, signTest } from '../lib/score.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const DIR = join(ROOT, 'results/two-step');
+const TWOSTEP_STAMP = stampOf(TWOSTEP_STAMP_FILES);
+const RUN_STAMP = stampOf(RUN_STAMP_FILES);
 const truth = Object.fromEntries(readFileSync(join(ROOT, 'data/truth.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l)).map((t) => [t.id, t]));
 const meta = {};
 const rowsFor = (id) => (meta[id] ??= buildHaystack(truth[id]).meta);
@@ -18,10 +21,10 @@ const firstPaste = (model, u) => (u ? callCost(model, { ...u, prompt_tokens_deta
 
 const groups = {};
 for (const f of readdirSync(DIR).filter((f) => /\.jsonl(\.gz)?$/.test(f))) {
-  const recs = readJsonl(join(DIR, f));
-  const stamps = new Set(recs.map((r) => r.stamp));
-  if (stamps.size !== 1 || stamps.has(undefined)) throw new Error(`${f}: missing or mixed stamps`);
-  for (const r of recs) {
+  // Refuses unstamped, mixed or stale files. Keeps the latest record per log.
+  const latest = {};
+  for (const r of readStamped(join(DIR, f), TWOSTEP_STAMP)) latest[`${r.method}|${r.model}|${r.id}`] = r;
+  for (const r of Object.values(latest)) {
     const v = verdict({ ok: r.final.ok, content: r.final.content }, truth[r.id], rowsFor(r.id));
     const key = `${r.method}|${r.model}|${r.tokens}`;
     (groups[key] ??= []).push({
@@ -39,7 +42,9 @@ for (const f of readdirSync(DIR).filter((f) => /\.jsonl(\.gz)?$/.test(f))) {
 // The same model with the whole log, from the main run.
 const whole = {};
 for (const f of readdirSync(join(ROOT, 'results/raw')).filter((f) => /\.jsonl(\.gz)?$/.test(f))) {
-  for (const r of readJsonl(join(ROOT, 'results/raw', f))) {
+  const latestWhole = {};
+  for (const r of readStamped(join(ROOT, 'results/raw', f), RUN_STAMP)) latestWhole[r.id] = r;
+  for (const r of Object.values(latestWhole)) {
     const v = verdict(r, truth[r.id], rowsFor(r.id));
     const key = `whole|${r.model}|${r.tokens}`;
     (whole[key] ??= []).push({ ...r, ...v, cost: firstPaste(r.model, r.usage), promptTokens: r.usage?.prompt_tokens ?? 0, wall: r.totalMs, cacheHit: cachedTokens(r.usage) > 1024 });

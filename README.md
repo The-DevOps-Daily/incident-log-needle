@@ -72,11 +72,11 @@ A combined log from a small shop on Kubernetes: ingress (nginx), four APIs, a wo
 Each log has, in time order:
 
 - **Background**: requests, jobs, checkpoints, autovacuum, Redis saves, Kubernetes events for batch jobs, controller reads.
-- **Harmless noise** (about 2.5% of lines): a retry that succeeds two lines later, deprecation warnings, a job that fails and passes on retry, a Redis reconnect, a client connection reset, a slow query, a `FailedScheduling` that is scheduled a few lines later, a 500 on a malformed search query.
+- **Harmless noise** (a 2.5% chance per line, about 3.7% of lines once the recovery lines are counted): a retry that succeeds two lines later, deprecation warnings, a job that fails and passes on retry, a Redis reconnect, a client connection reset, a slow query, a `FailedScheduling` that is scheduled a few lines later, a 500 on a malformed search query.
 - **Harmless changes**: changes of the same kind as the root cause but to something else (another PgBouncer pool, another certificate, another HPA, another Redis setting, another queue), plus deploys of an unrelated service.
 - **The root cause** (the needle): one line, at a set depth of the part before the outage.
 - **The outage**: from a fixed start time, symptoms (errors, 5xx responses, an alert) mixed with normal traffic.
-- **The decoy**: one loud line a few seconds after the outage started that looks like a cause but is a consequence (an OOM kill, a crash loop, a circuit breaker opening, a process exit, a RabbitMQ memory alarm).
+- **The decoy**: one loud line a few seconds after the outage started that looks like a cause and is meant as a consequence (an OOM kill, a crash loop, a circuit breaker opening, a process exit, a RabbitMQ memory alarm).
 
 Five incident shapes rotate through the grid, so every length and every depth sees each shape three times:
 
@@ -102,7 +102,7 @@ An earlier project of ours had a bug in its test data that made strong models lo
 
 - `scripts/02-check-haystacks.mjs` rebuilds every log from its seed (the sha256 must match) and checks it the way a reader would, with regular expressions on the text: the root cause is on exactly one line, at the stated depth, before the outage; the decoy is on exactly one line, after the outage started, in another component; no symptom and no failing checkout request appears before the outage; no line hints at another shape's cause or symptoms; every warning or error before the outage is a known harmless family; every harmless failure recovers within 8 lines. Result: `results/haystack-check.txt`.
 - `scripts/02b-break-checker.mjs` plants eight generator bugs in copies of real logs (needle twice, decoy before the outage, symptom before the outage, an unexplained error, a noise failure without its recovery, a truth file one line off, a failing checkout before the outage, a second shape's cause) and asserts that the checker reports each one. Result: `results/break-checker.txt`.
-- By hand: we read one 10k log end to end (`t010k-d075-r2`, 185 lines) and the key lines of 10 more (`results/hand-check/`: the root cause, every harmless change, every warning or error before the outage, the first 12 lines of the outage and the decoy), two per shape, at 10k and 200k. Reading by hand found three realism problems the checker could not see: the same certificate renewed twice in an hour, a pool resized "from 10 to 14" right after "from 10 to 16", and a Redis startup warning a dozen times in one afternoon. None changed which line was the cause; all three were fixed before the main run.
+- By hand: we read one 10k log end to end (`t010k-d075-r2`, 185 lines) and the key lines of 10 more (`results/hand-check/`: the root cause, every harmless change, every warning or error before the outage, the first 12 lines of the outage and the decoy), two per shape, at 10k and 200k. Reading by hand found three realism problems the checker could not see: the same certificate renewed twice in an hour, a pool resized "from 10 to 14" right after "from 10 to 16", and a Redis startup warning a dozen times in one afternoon. None changed which line was the cause. The first two were fixed before the main run; the third was made rarer (it still appears three to five times in some 200k logs).
 
 ## The prompt
 
@@ -134,7 +134,7 @@ The user message is the incident summary (for example "Checkout (POST /api/check
 | invalid | no usable line number in the reply |
 | error | the call failed after retries |
 
-Only `exact` counts as found in the headline numbers. An answer that points a tired engineer at the wrong line number is wrong, even when the quote is right.
+Only `exact` counts as found in the headline numbers. The verdict is about the line number: one Ministral answer gave the right number with the quote of a harmless change and counts as exact. When a reply is not valid JSON, the line number is read with a regular expression (6 Nemotron replies; all 6 quoted the right line). An answer that points a tired engineer at the wrong line number is wrong, even when the quote is right.
 
 ## Cost and latency
 
@@ -146,7 +146,16 @@ Every log starts with different text, so no call reused a prompt cache except fo
 
 - Every recorded call is stamped with a hash of the runner, client, prompt, model settings, generator and truth file. The scorer refuses unstamped files, mixed stamps and stale stamps, and records filed under the wrong model.
 - Each results file has one writer (a lock file).
-- The runner keeps its own count of spend from every record under `results/` and stops before that count plus the worst case of the calls in flight passes `SPEND_CAP_USD` ($14 by default).
+- The runners keep their own count of spend from every record under `results/` and stop before that count plus an estimate for the calls in flight passes `SPEND_CAP_USD` ($14 by default). The estimate comes from the prompt size, so it is a guard, not a hard limit.
+- `scripts/05b-score-two-step.mjs` also refuses stale or mixed stamps and keeps the latest record per log.
+
+## Known limits of the test
+
+- The cause is planted and deliberately unambiguous: the checker makes sure exactly one line matches each shape's cause pattern. This is closer to finding one clear line than to a full root-cause analysis.
+- The clock is synthetic. At depth 100% the change lands seconds before the outage, and some symptom lines quote waits longer than that (in `t200k-d100-r2`, a 27.5-second wait 2 seconds after the pool shrank).
+- The decoy comes after the outage started and from another component; the generator does not prove it is caused by the needle.
+- In the chunk baseline, 105 of DeepSeek V4 Flash's 255 map calls used the whole 8,192-token output budget and returned nothing. Read the chunk results as a result for this setup.
+- p-values in `results/stats.md` are exploratory and not corrected for multiple tests.
 
 ## Model access
 
